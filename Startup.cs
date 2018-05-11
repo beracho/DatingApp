@@ -42,6 +42,7 @@ namespace DatingApp.API
             //     x.UseMySQL(Configuration.GetConnectionString("mysqlconnectionUpdate-Database"));
             // });
             services.AddMvc();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +53,13 @@ namespace DatingApp.API
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(x => 
+                x.AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowAnyOrigin()
+                .AllowCredentials()
+            );
+            // Returns the request to the client
             app.UseMvc();
         }
     }
