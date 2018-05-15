@@ -14,7 +14,9 @@ namespace DatingApp.API.Migrations
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
+                        // for SQL Server
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn)
+                        // for SQLite
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true)
                 },
